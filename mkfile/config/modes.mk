@@ -1,0 +1,104 @@
+#! This file holds the default values and logic for project build configuration variables
+
+
+
+#! Define all possible build modes
+BUILDMODES = \
+	debug	\
+	release	\
+# if the BUILDMODE variable has no value, give it a default value
+ifeq ($(strip $(BUILDMODE)),)
+	BUILDMODE=debug
+else
+	ifeq ($(filter $(BUILDMODE), $(BUILDMODES)),)
+	$(error Invalid value for BUILDMODE, should be `debug` or `release`)
+	endif
+endif
+
+
+
+#! Define all possible library-linking modes
+LIBMODES = \
+	static	\
+	dynamic	\
+# if the LIBMODE variable has no value, give it a default value
+ifeq ($(strip $(LIBMODE)),)
+	LIBMODE=static
+else
+	ifeq ($(filter $(LIBMODE), $(LIBMODES)),)
+	$(error Invalid value for LIBMODE, should be `static` or `dynamic`)
+	endif
+endif
+
+
+
+UNAME_S := $(shell uname -s)
+UNAME_M := $(shell uname -m)
+UNAME_P := $(shell uname -p)
+
+
+
+#! Define all possible supported target platforms/operating systems
+OSMODES = \
+	windows	\
+	macos	\
+	linux	\
+	other	\
+# if the OSMODE variable has no value, give it a default value based on the current platform
+ifeq ($(strip $(OSMODE)),)
+	OSMODE := other
+	ifeq ($(OS),Windows_NT)
+		OSMODE := windows
+	else
+		ifeq ($(UNAME_S),Linux)
+			OSMODE := linux
+		endif
+		ifeq ($(UNAME_S),Darwin)
+			OSMODE := macos
+		endif
+	endif
+	ifeq ($(OSMODE),other)
+	_:=$(call print_warning,"Could not estimate the current target platform, defaulting to 'OSMODE = other'...")
+	endif
+endif
+
+
+
+#! Since it is not viable to have/maintain make an exhaustive list of all possible target ASM/CPU architectures, instead we simply use the result of `uname -m`)
+CPUMODES = \
+	other	\
+# if the CPUMODE variable has no value, give it a default value based on the current CPU architecture
+ifeq ($(strip $(CPUMODE)),)
+	CPUMODE := other
+	ifdef __EMSCRIPTEN__
+		CPUMODE := wasm-$(if $(findstring 64, $(UNAME_M) $(UNAME_P)),64,32)
+	else
+		CPUMODE := $(strip $(UNAME_M))
+		CPUMODE := $(subst _,-,$(CPUMODE))
+		#CPUMODE := $(subst $(C_SPACE),-,$(CPUMODE))
+	endif
+	ifeq ($(strip $(CPUMODE)),)
+	_:=$(call print_warning,"Could not estimate the current target CPU architecture, defaulting to 'CPUMODE = other'...")
+	CPUMODE := other
+	endif
+endif
+
+
+
+#! The file extension used for static library files
+LIBEXT_static := a
+
+#! The file extension used for dynamic library files
+LIBEXT_dynamic := 
+ifeq ($(OSMODE),windows)
+	LIBEXT_dynamic := dll
+endif
+ifeq ($(OSMODE),linux)
+	LIBEXT_dynamic := so
+endif
+ifeq ($(OSMODE),macos)
+	LIBEXT_dynamic := dylib
+endif
+ifeq ($(OSMODE),other)
+$(warning Unsupported platform: you must configure the dynamic library file extension your machine uses)
+endif
