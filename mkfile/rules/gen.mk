@@ -3,22 +3,22 @@
 
 
 # lex
-LEX_SRC = $(GENDIR)/lex.yy.c
-LEX_INPUT = $(SRCDIR)/parser.l
+LEX_GEN = $(GENDIR)/lex.yy.c
+LEX_SRC = $(SRCDIR)/parser.l
 LEX = flex
 LFLAGS = # -d
 
 # yacc
 YACC_HDR = $(GENDIR)/y.tab.h
-YACC_SRC = $(GENDIR)/y.tab.c
-YACC_INPUT = $(SRCDIR)/parser.y
+YACC_GEN = $(GENDIR)/y.tab.c
+YACC_SRC = $(SRCDIR)/parser.y
 YACC = bison
 YFLAGS = # -t
 
 
 
-$(LEX_SRC): $(LEX_INPUT)
-	$(LEX)  $(LFLAGS) -o $(LEX_SRC) $(LEX_INPUT)
+$(LEX_GEN): $(LEX_SRC)
+	$(LEX)  $(LFLAGS) -o $(LEX_GEN) $(LEX_SRC)
 
-$(YACC_SRC): $(YACC_INPUT)
-	$(YACC) $(YFLAGS) --defines=$(YACC_HDR) -o $(YACC_SRC) $(YACC_INPUT)
+$(YACC_GEN): $(YACC_SRC)
+	$(YACC) $(YFLAGS) --defines=$(YACC_HDR) -o $(YACC_GEN) $(YACC_SRC)

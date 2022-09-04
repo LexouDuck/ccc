@@ -8,6 +8,7 @@
 /ppp-test
 
 # Build
+/src/gen/*.output
 /obj/
 /bin/
 /dist/

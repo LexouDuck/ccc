@@ -58,9 +58,9 @@ t_char*	ppp_symbolfieldtostr(s_symbol_field const* symbolfield)
 		return (NULL);
 	return c_strfmt(
 		"\n""{"
-		"\n""\t"".name"          " = %s,"
-		"\n""\t"".type"          " = %s,"
-		"\n""\t"".value"         " = %s,"
+		"\n""\t"".name"          " = \"%s\","
+		"\n""\t"".type"          " = \"%s\","
+		"\n""\t"".value"         " = \"%s\","
 		"\n""}",
 		symbolfield->name,
 		symbolfield->type,
@@ -76,9 +76,9 @@ t_char*	ppp_symboltostr(s_symbol const* symbol)
 		"\n""{"
 		"\n""\t"".kind"          " = %s,"
 		"\n""\t"".scope"         " = %i,"
-		"\n""\t"".name"          " = %s,"
-		"\n""\t"".type"          " = %s,"
-		"\n""\t"".value"         " = %s,"
+		"\n""\t"".name"          " = \"%s\","
+		"\n""\t"".type"          " = \"%s\","
+		"\n""\t"".value"         " = \"%s\","
 		"\n""\t"".fields_amount" " = %u,"
 		"\n""\t"".fields"        " = %s,"
 		"\n""}",

@@ -114,6 +114,7 @@ include $(MKFILES_DIR)rules/version.mk
 include $(MKFILES_DIR)rules/packages.mk
 
 include $(MKFILES_DIR)rules/lists.mk
+include $(MKFILES_DIR)rules/gen.mk
 include $(MKFILES_DIR)rules/build.mk
 include $(MKFILES_DIR)rules/install.mk
 include $(MKFILES_DIR)rules/dist.mk

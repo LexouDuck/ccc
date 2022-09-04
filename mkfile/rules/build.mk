@@ -42,6 +42,8 @@ bin_symlinks = \
 .PHONY:\
 build #! Builds the program, with the default BUILDMODE (typically debug)
 build: \
+$(LEX_GEN) \
+$(YACC_GEN) \
 $(BINPATH)$(NAME)
 
 .PHONY:\

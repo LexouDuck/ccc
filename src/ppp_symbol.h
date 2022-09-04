@@ -81,4 +81,10 @@ s_symbol*		ppp_symboltable_find  (e_symbolkind kind, t_char const* name);
 
 
 
+t_char const*	ppp_symbolkindtostr(e_symbolkind kind);
+t_char*			ppp_symbolfieldtostr(s_symbol_field const* symbolfield);
+t_char*			ppp_symboltostr(s_symbol const* symbol);
+
+
+
 #endif

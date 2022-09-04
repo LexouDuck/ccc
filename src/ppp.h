@@ -42,15 +42,15 @@
 typedef struct ppp
 {
 	t_char const*	current_file;	//!< name of the file being parsed
-	t_char const*	display_file;	//!< name of the file to display (taking in account any `#line` preproc statements)
+	t_char const*	display_file;	//!< name of the file to display (taking in account any `#line` directives)
 	t_uint			current_line;	//!< the current line number being parsed from the `current_file`
-	t_uint			display_line;	//!< the current line number to display (taking in account any `#line` preproc statements)
+	t_uint			display_line;	//!< the current line number to display (taking in account any `#line` directives)
 
-	t_bool		debug;		//!< if TRUE, debug mode is active
-	t_bool		verbose;	//!< if TRUE, verbose mode is active
+	t_bool			debug;		//!< if `TRUE`, debug mode is active
+	t_bool			verbose;	//!< if `TRUE`, verbose mode is active
 
-	t_uint		errors;		//!< total amount of errors so far
-	t_uint		warnings;	//!< total amount of warnings so far
+	t_uint			errors;		//!< total amount of errors so far
+	t_uint			warnings;	//!< total amount of warnings so far
 
 	t_char*			whitespace;	//!< the latest parsed string of contiguous whitespace
 	s_syntaxlist*	syntax_list; //!< the full source code, in token-list format
@@ -90,6 +90,10 @@ int		ppp_verbatim(char const* lex_str, int lex_token);
 
 //! Get the lex/yacc token integer from a lexed string
 int		ppp_token(char const* lex_str);
+
+// writing
+
+int     ppp_write(void);
 
 
 

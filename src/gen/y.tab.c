@@ -268,7 +268,7 @@
 
 
 /* Copy the first part of user declarations.  */
-#line 34 "src/parser.y"
+#line 34 "./src//parser.y"
 
 
 #include "ppp.h"
@@ -297,7 +297,7 @@ int yydebug = 1;
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 108 "src/parser.y"
+#line 108 "./src//parser.y"
 {
 	int              v_int;
 	float            v_float;
@@ -307,7 +307,7 @@ typedef union YYSTYPE
 	s_symbol_field   v_symbol_field;
 }
 /* Line 193 of yacc.c.  */
-#line 311 "gen/y.tab.c"
+#line 311 "./src/gen//y.tab.c"
 	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
@@ -332,7 +332,7 @@ typedef struct YYLTYPE
 
 
 /* Line 216 of yacc.c.  */
-#line 336 "gen/y.tab.c"
+#line 336 "./src/gen//y.tab.c"
 
 #ifdef short
 # undef short
@@ -2493,218 +2493,218 @@ yyreduce:
   switch (yyn)
     {
         case 15:
-#line 176 "src/parser.y"
+#line 176 "./src//parser.y"
     {;}
     break;
 
   case 16:
-#line 177 "src/parser.y"
+#line 177 "./src//parser.y"
     {;}
     break;
 
   case 17:
-#line 178 "src/parser.y"
+#line 178 "./src//parser.y"
     {;}
     break;
 
   case 18:
-#line 179 "src/parser.y"
+#line 179 "./src//parser.y"
     {;}
     break;
 
   case 19:
-#line 180 "src/parser.y"
+#line 180 "./src//parser.y"
     {;}
     break;
 
   case 20:
-#line 184 "src/parser.y"
+#line 184 "./src//parser.y"
     {;}
     break;
 
   case 21:
-#line 185 "src/parser.y"
+#line 185 "./src//parser.y"
     {;}
     break;
 
   case 22:
-#line 186 "src/parser.y"
+#line 186 "./src//parser.y"
     {;}
     break;
 
   case 23:
-#line 187 "src/parser.y"
+#line 187 "./src//parser.y"
     {;}
     break;
 
   case 24:
-#line 188 "src/parser.y"
+#line 188 "./src//parser.y"
     {;}
     break;
 
   case 25:
-#line 189 "src/parser.y"
+#line 189 "./src//parser.y"
     {;}
     break;
 
   case 26:
-#line 193 "src/parser.y"
+#line 193 "./src//parser.y"
     { ppp_symboltable_delete(SYMBOLKIND_MACRO, (yyvsp[(3) - (3)].v_str)); ;}
     break;
 
   case 27:
-#line 197 "src/parser.y"
+#line 197 "./src//parser.y"
     { (yyval.v_symbol) = ppp_c_define((yyvsp[(3) - (3)].v_str), NULL, NULL); ;}
     break;
 
   case 28:
-#line 198 "src/parser.y"
+#line 198 "./src//parser.y"
     { (yyval.v_symbol) = ppp_c_define((yyvsp[(3) - (4)].v_str), NULL, NULL); ;}
     break;
 
   case 29:
-#line 199 "src/parser.y"
+#line 199 "./src//parser.y"
     { (yyval.v_symbol) = ppp_c_define((yyvsp[(3) - (5)].v_str), NULL,   (yyvsp[(5) - (5)].v_str)); ;}
     break;
 
   case 30:
-#line 200 "src/parser.y"
+#line 200 "./src//parser.y"
     { (yyval.v_symbol) = ppp_c_define((yyvsp[(3) - (6)].v_str), (char const**)(yyvsp[(5) - (6)].v_strarr), NULL); ;}
     break;
 
   case 31:
-#line 201 "src/parser.y"
+#line 201 "./src//parser.y"
     { (yyval.v_symbol) = ppp_c_define((yyvsp[(3) - (7)].v_str), (char const**)(yyvsp[(5) - (7)].v_strarr),   (yyvsp[(7) - (7)].v_str)); ;}
     break;
 
   case 32:
-#line 205 "src/parser.y"
+#line 205 "./src//parser.y"
     { ppp_debug("parameter list begin: %s", (yyvsp[(1) - (1)].v_str)); (yyval.v_strarr) = c_strarrcreate(1, c_strdup((yyvsp[(1) - (1)].v_str))); ;}
     break;
 
   case 33:
-#line 206 "src/parser.y"
+#line 206 "./src//parser.y"
     { ppp_debug("parameter list next:  %s", (yyvsp[(3) - (3)].v_str)); (yyval.v_strarr) = c_strarrappend(&((yyvsp[(1) - (3)].v_strarr)), (char const*[2]){ c_strdup((yyvsp[(3) - (3)].v_str)), NULL }); ;}
     break;
 
   case 34:
-#line 210 "src/parser.y"
+#line 210 "./src//parser.y"
     { ppp_c_include((yyvsp[(2) - (2)].v_str)); ;}
     break;
 
   case 35:
-#line 211 "src/parser.y"
+#line 211 "./src//parser.y"
     { ppp_c_include((yyvsp[(2) - (2)].v_str)); ;}
     break;
 
   case 36:
-#line 212 "src/parser.y"
+#line 212 "./src//parser.y"
     { ppp_c_include((yyvsp[(3) - (3)].v_str)); ;}
     break;
 
   case 37:
-#line 213 "src/parser.y"
+#line 213 "./src//parser.y"
     { ppp_c_include((yyvsp[(3) - (3)].v_str)); ;}
     break;
 
   case 38:
-#line 217 "src/parser.y"
+#line 217 "./src//parser.y"
     { ppp_c_line(           0,         NULL); ;}
     break;
 
   case 39:
-#line 218 "src/parser.y"
+#line 218 "./src//parser.y"
     { ppp_c_line(           0,         NULL); ;}
     break;
 
   case 40:
-#line 219 "src/parser.y"
+#line 219 "./src//parser.y"
     { ppp_c_line(c_strtou((yyvsp[(3) - (3)].v_str)),         NULL); ;}
     break;
 
   case 41:
-#line 220 "src/parser.y"
+#line 220 "./src//parser.y"
     { ppp_c_line(c_strtou((yyvsp[(3) - (5)].v_str)), c_strdup((yyvsp[(5) - (5)].v_str))); ;}
     break;
 
   case 42:
-#line 221 "src/parser.y"
+#line 221 "./src//parser.y"
     { ppp_c_line(c_strtou((yyvsp[(3) - (5)].v_str)), c_strdup((yyvsp[(5) - (5)].v_str))); ;}
     break;
 
   case 153:
-#line 421 "src/parser.y"
+#line 421 "./src//parser.y"
     { ppp_symboltable_create(&(s_symbol){ .kind=SYMBOLKIND_STRUCT, .name=c_strdup("") }); ;}
     break;
 
   case 154:
-#line 422 "src/parser.y"
+#line 422 "./src//parser.y"
     { ppp_symboltable_create(&(s_symbol){ .kind=SYMBOLKIND_STRUCT, .name=c_strdup((yyvsp[(2) - (5)].v_str)) }); ;}
     break;
 
   case 155:
-#line 423 "src/parser.y"
+#line 423 "./src//parser.y"
     { ppp_symboltable_create(&(s_symbol){ .kind=SYMBOLKIND_STRUCT, .name=c_strdup((yyvsp[(2) - (2)].v_str)) }); ;}
     break;
 
   case 166:
-#line 450 "src/parser.y"
+#line 450 "./src//parser.y"
     { ppp_symboltable_create(&(s_symbol){ .kind=SYMBOLKIND_UNION, .name=c_strdup("") }); ;}
     break;
 
   case 167:
-#line 451 "src/parser.y"
+#line 451 "./src//parser.y"
     { ppp_symboltable_create(&(s_symbol){ .kind=SYMBOLKIND_UNION, .name=c_strdup((yyvsp[(2) - (5)].v_str)) }); ;}
     break;
 
   case 168:
-#line 452 "src/parser.y"
+#line 452 "./src//parser.y"
     { ppp_symboltable_create(&(s_symbol){ .kind=SYMBOLKIND_UNION, .name=c_strdup((yyvsp[(2) - (2)].v_str)) }); ;}
     break;
 
   case 169:
-#line 458 "src/parser.y"
+#line 458 "./src//parser.y"
     { ppp_symboltable_create(&(s_symbol){ .kind=SYMBOLKIND_ENUM, .name=c_strdup("") }); ;}
     break;
 
   case 170:
-#line 459 "src/parser.y"
+#line 459 "./src//parser.y"
     { ppp_symboltable_create(&(s_symbol){ .kind=SYMBOLKIND_ENUM, .name=c_strdup("") }); ;}
     break;
 
   case 171:
-#line 460 "src/parser.y"
+#line 460 "./src//parser.y"
     { ppp_symboltable_create(&(s_symbol){ .kind=SYMBOLKIND_ENUM, .name=c_strdup((yyvsp[(2) - (5)].v_str)) }); ;}
     break;
 
   case 172:
-#line 461 "src/parser.y"
+#line 461 "./src//parser.y"
     { ppp_symboltable_create(&(s_symbol){ .kind=SYMBOLKIND_ENUM, .name=c_strdup((yyvsp[(2) - (6)].v_str)) }); ;}
     break;
 
   case 173:
-#line 462 "src/parser.y"
+#line 462 "./src//parser.y"
     { ppp_symboltable_create(&(s_symbol){ .kind=SYMBOLKIND_ENUM, .name=c_strdup((yyvsp[(2) - (2)].v_str)) }); ;}
     break;
 
   case 309:
-#line 731 "src/parser.y"
+#line 731 "./src//parser.y"
     {  ;}
     break;
 
   case 310:
-#line 732 "src/parser.y"
+#line 732 "./src//parser.y"
     {  ;}
     break;
 
   case 311:
-#line 733 "src/parser.y"
+#line 733 "./src//parser.y"
     {  ;}
     break;
 
 
 /* Line 1267 of yacc.c.  */
-#line 2708 "gen/y.tab.c"
+#line 2708 "./src/gen//y.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -2924,7 +2924,7 @@ yyreturn:
 }
 
 
-#line 757 "src/parser.y"
+#line 757 "./src//parser.y"
 
 
 void yyerror(char const* str)

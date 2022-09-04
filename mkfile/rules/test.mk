@@ -2,6 +2,8 @@
 
 
 
+.PHONY:\
+test-file #! Runs a single-file test (for the given 'FILE' argument)
 test-file: all
 ifeq ($(strip $(FILE)),)
 	@$(call print_error,"Expected FILE argument for this make rule")
@@ -11,6 +13,8 @@ endif
 	@echo "===================="
 	@cat "$(OUTDIR)$(FILE:%.++c=%.c)"
 
+.PHONY:\
+test-debug #! Runs a single-file test, with full verbose debug output (for the given 'FILE' argument)
 test-debug: all
 ifeq ($(strip $(FILE)),)
 	@$(call print_error,"Expected FILE argument for this make rule")

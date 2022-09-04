@@ -242,7 +242,7 @@
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 108 "src/parser.y"
+#line 108 "./src//parser.y"
 {
 	int              v_int;
 	float            v_float;
@@ -252,7 +252,7 @@ typedef union YYSTYPE
 	s_symbol_field   v_symbol_field;
 }
 /* Line 1529 of yacc.c.  */
-#line 256 "gen/y.tab.h"
+#line 256 "./src/gen//y.tab.h"
 	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
