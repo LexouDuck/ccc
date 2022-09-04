@@ -32,15 +32,19 @@ NAME_TEST = ppp-test
 # repository folders
 
 #! The directory for header code files (stores `.h` files)
-HDRDIR = ./hdr/
+HDRDIR = ./src/
 #! The directory for source code files (stores `.c` files)
 SRCDIR = ./src/
+#! The directory for compiled object files (stores `.o` and `.d` files)
+GENDIR = $(SRCDIR)gen/
+#! The directory for compiled object files (stores `.o` and `.d` files)
+OUTDIR = ./out/
 #! The directory for dependency library files (stores libs - static:`.a` or dynamic:`.dll`/`.dylib`/`.so`)
 LIBDIR = ./lib/
 #! The directory for documentation (stores config and scripts to generate doc)
 DOCDIR = ./doc/
 #! The directory for testing programs (stores source/header code for the various testing programs)
-TESTDIR = ./test/
+TESTDIR = ./tests/
 #! The directory for git hooks scripts
 GITHOOKSDIR = ./.githooks/
 #! The directory for important list files (source files, packages)

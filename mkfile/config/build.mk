@@ -19,11 +19,9 @@ CFLAGS = \
 	-Wextra \
 	-Winline \
 	-Wpedantic \
-	-Wstrict-prototypes \
 	-Wmissing-prototypes \
 	-Wold-style-definition \
 	-fstrict-aliasing \
-	-std= \
 	$(CFLAGS_BUILDMODE) \
 	$(CFLAGS_OS) \
 	$(CFLAGS_EXTRA)
@@ -32,13 +30,15 @@ CFLAGS = \
 CFLAGS_BUILDMODE = $(CFLAGS_BUILDMODE_$(BUILDMODE))
 #! C compiler flags which are only present in "debug" build mode
 CFLAGS_BUILDMODE_debug = \
+	-D DEBUG=1 \
 	-g \
 	-ggdb \
-	-D DEBUG=1
+	-fsanitize=address \
 #! C compiler flags which are only present in "release" build mode
 CFLAGS_BUILDMODE_release = \
+	-D RELEASE=1 \
 	-O3 \
-	-D RELEASE=1
+	-flto \
 
 #! C compiler options which are platform-specific, according to $(OSMODE)
 CFLAGS_OS = $(CFLAGS_OS_$(OSMODE))
@@ -52,9 +52,7 @@ endif
 
 #! This variable is intentionally empty, to specify additional C compiler options from the commandline
 CFLAGS_EXTRA ?= \
-#	-flto \
 #	-fanalyzer \
-#	-fsanitize=address \
 #	-fsanitize=thread \
 #	-std=ansi -pedantic \
 #	-D __NOSTD__=1 \
@@ -127,6 +125,9 @@ LDLIBS_EXTRA ?= \
 #! GNU conventional variable: List of included folders, which store header code files
 INCLUDES = \
 	-I$(HDRDIR) \
+	-I$(SRCDIR) \
+	-I$(GENDIR) \
+	-I$(LIBDIR) \
 	$(INCLUDES_BUILDMODE) \
 	$(INCLUDES_OS) \
 	$(INCLUDES_EXTRA)

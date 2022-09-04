@@ -2,6 +2,26 @@
 
 
 
+test-file: all
+ifeq ($(strip $(FILE)),)
+	@$(call print_error,"Expected FILE argument for this make rule")
+endif
+	@mkdir -p "$(OUTDIR)`dirname $(FILE)`"
+	@$(call run,$(BINPATH)$(NAME)) --debug --verbose $(FILE) > "$(OUTDIR)$(FILE:%.++c=%.c)"
+	@echo "=========="
+	@cat "$(OUTDIR)$(FILE:%.++c=%.c)"
+
+test-debug: all
+ifeq ($(strip $(FILE)),)
+	@$(call print_error,"Expected FILE argument for this make rule")
+endif
+	@mkdir -p "$(OUTDIR)`dirname $(FILE)`"
+	@echo 'r --debug --verbose $(FILE)' | $(DBG) ./$(NAME)
+	@echo "=========="
+	@cat "$(OUTDIR)$(FILE)"
+
+
+
 .PHONY:\
 test #! Runs the test suite program, with the given 'ARGS'
 test: $(NAME_TEST)

@@ -1,0 +1,7 @@
+./src/gen/lex.yy.c
+./src/gen/y.tab.c
+./src/ppp.c
+./src/ppp_log.c
+./src/ppp_semantics.c
+./src/ppp_symbol.c
+./src/ppp_syntax.c

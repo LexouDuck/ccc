@@ -1,0 +1,4 @@
+./src/gen/y.tab.h
+./src/ppp.h
+./src/ppp_symbol.h
+./src/ppp_syntax.h

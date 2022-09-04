@@ -1,0 +1,3 @@
+[submodule "lib/libccc"]
+	path = lib/libccc
+	url = https://github.com/LexouDuck/libccc

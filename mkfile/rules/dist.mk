@@ -70,8 +70,8 @@ clean-dist:
 prereq-dist #! Checks prerequisite installs to distribute build archives of the program
 prereq-dist:
 	@-$(call check_prereq,'(dist) ZIP archive creator: zip',\
-		zip --version,\
+		zip -v,\
 		$(call install_prereq,zip))
 	@-$(call check_prereq,'(dist) ZIP archive extractor: unzip',\
-		unzip --version,\
+		unzip -v,\
 		$(call install_prereq,unzip))
