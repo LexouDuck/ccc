@@ -8,7 +8,7 @@ ifeq ($(strip $(FILE)),)
 endif
 	@mkdir -p "$(OUTDIR)`dirname $(FILE)`"
 	@$(call run,$(BINPATH)$(NAME)) --debug --verbose $(FILE) > "$(OUTDIR)$(FILE:%.++c=%.c)"
-	@echo "=========="
+	@echo "===================="
 	@cat "$(OUTDIR)$(FILE:%.++c=%.c)"
 
 test-debug: all
@@ -17,8 +17,6 @@ ifeq ($(strip $(FILE)),)
 endif
 	@mkdir -p "$(OUTDIR)`dirname $(FILE)`"
 	@echo 'r --debug --verbose $(FILE)' | $(DBG) ./$(NAME)
-	@echo "=========="
-	@cat "$(OUTDIR)$(FILE)"
 
 
 
