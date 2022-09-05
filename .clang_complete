@@ -1,0 +1,16 @@
+-D DEBUG=1
+-Ilocal_folder
+-I./
+-I./src/
+-I./src/gen/
+-I./tests/
+-I./++c/ppp/gen/
+-std=c99
+-Wall
+-Wextra
+-Winline
+-Wpedantic
+-Wstrict-prototypes \
+-Wmissing-prototypes \
+-Wold-style-definition \
+-fstrict-aliasing
