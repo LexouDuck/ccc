@@ -10,11 +10,30 @@
 
 
 
+void	ppp_comment_block(char const* lex_str)
+{
+	//if (ppp_flags.no_comments == FALSE)
+	ppp_verbatim(lex_str, 0);
+}
+
+void	ppp_comment_line(char const* lex_str)
+{
+	//if (ppp_flags.no_comments == FALSE)
+	ppp_verbatim(lex_str, 0);
+}
+
+void	ppp_whitespace(char const* lex_str)
+{
+	//if (ppp_flags.minified == FALSE)
+	ppp.current_line = yylineno;
+	ppp.whitespace = c_strdup(lex_str);
+}
+
 int	ppp_verbatim(char const* lex_str, int lex_token)
 {
 	t_char* verbatim = c_strdup(lex_str);
 	yylval.v_str = verbatim;
-	ppp_syntaxlist_add(&(s_syntaxlist)
+	ppp_syntaxlist_add(&(s_syntaxlist const)
 	{
 		.lexed = lex_token,
 		.source_space = ppp.whitespace,
@@ -58,26 +77,15 @@ int		ppp_token(char const* lex_str)
 
 
 
-void	ppp_comment_block(char const* lex_str)
+void	ppp_syntaxlist_add(s_syntaxlist const* item)
 {
-	//if (ppp_flags.no_comments == FALSE)
-	ppp_verbatim(lex_str, 0);
+	t_uint	length = ppp_syntaxlist_length();
+	ppp.syntax_list = (ppp.syntax_list == NULL) ?
+		c_memalloc(                   (length + 2) * sizeof(s_syntaxlist)) :
+		c_memrealloc(ppp.syntax_list, (length + 2) * sizeof(s_syntaxlist));
+	ppp.syntax_list[length] = *item;
+	ppp.syntax_list[length + 1] = SYNTAXLIST_TERMINATOR;
 }
-
-void	ppp_comment_line(char const* lex_str)
-{
-	//if (ppp_flags.no_comments == FALSE)
-	ppp_verbatim(lex_str, 0);
-}
-
-void	ppp_whitespace(char const* lex_str)
-{
-	//if (ppp_flags.minified == FALSE)
-	ppp.current_line = yylineno;
-	ppp.whitespace = c_strdup(lex_str);
-}
-
-
 
 t_uint	ppp_syntaxlist_length(void)
 {
@@ -89,14 +97,4 @@ t_uint	ppp_syntaxlist_length(void)
 		++i;
 	}
 	return (i);
-}
-
-void	ppp_syntaxlist_add(s_syntaxlist const* item)
-{
-	t_uint	length = ppp_syntaxlist_length();
-	ppp.syntax_list = (ppp.syntax_list == NULL) ?
-		c_memalloc(                   (length + 2) * sizeof(s_syntaxlist)) :
-		c_memrealloc(ppp.syntax_list, (length + 2) * sizeof(s_syntaxlist));
-	ppp.syntax_list[length] = *item;
-	ppp.syntax_list[length + 1] = SYNTAXLIST_TERMINATOR;
 }
