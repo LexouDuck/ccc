@@ -8,7 +8,7 @@
 Documentation
 ---
 The documentation for ppp is available at the following address:
-- https://Alexis Duquesne.github.io/ppp/doc/html/index.html
+- https://lexouduck.github.io/ppp/doc/html/index.html
 
 
 
