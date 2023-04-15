@@ -807,7 +807,8 @@ printf("%s\n", obj<object*>["sub"]<char*>["str"]); // type inferrence cannot be 
 ++C supports interfaces (similar to their incarnations in many other languages): an interface defines a category of types, which verify certain conditions
 ```c
 #interface i_iterable<T>
-	#has #(sizeof(i_iterable<T>) == 1)
+	#has #(sizeof(T) == 1)
+	#has #(T is char || T is unsigned char)
 	#has Iterate(i_iterable<T> self, (T) => void f) => void
 ```
 An interface may be followed by any number of `#has` directives, which describe the interface.
@@ -893,7 +894,7 @@ enum e_test
 int main()
 {
 	#reflect(enum e_test) \
-	printf("\t%s\t%s\n", #value, #type, #name); comment
+	printf("\t%s\t%s\n", #value, #name); comment
 }
 
 // transpiles to C:
